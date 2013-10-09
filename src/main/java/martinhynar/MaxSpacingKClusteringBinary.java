@@ -10,9 +10,8 @@ import martinhynar.unionfind.UnionFind;
 import martinhynar.unionfind.WeightedUnionFind;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
-import java.math.BigInteger;
+import java.io.Reader;
 import java.util.BitSet;
 import java.util.HashMap;
 import java.util.Map;
@@ -46,14 +45,15 @@ import java.util.Map;
  * @author Martin Hynar
  */
 public class MaxSpacingKClusteringBinary {
-    private String filename;
     private int limit;
     private int bits;
     private UnionFind clusters;
     private Map<Integer, Node> nodes;
+    private Reader source;
+    private BufferedReader reader;
 
-    public MaxSpacingKClusteringBinary useSourceFile(String filename) {
-        this.filename = filename;
+    public MaxSpacingKClusteringBinary useSource(Reader source) {
+        this.source = source;
         return this;
     }
 
@@ -69,7 +69,7 @@ public class MaxSpacingKClusteringBinary {
     }
 
     private void readFile() throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(filename));
+        reader = new BufferedReader(source);
         String line;
         String[] split = null;
         // First line is: [# of nodes] [# of bits for each node's label]

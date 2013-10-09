@@ -11,8 +11,8 @@ import martinhynar.unionfind.UnionFind;
 import martinhynar.unionfind.WeightedUnionFind;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
 import java.util.PriorityQueue;
 
 /**
@@ -37,9 +37,10 @@ import java.util.PriorityQueue;
 public class MaxSpacingKClustering {
     private int targetClusters;
     private int actualClusters;
-    private String filename;
     private PriorityQueue<Edge> edges;
     private UnionFind clusters;
+    private Reader source;
+    private BufferedReader reader;
 
     public MaxSpacingKClustering() {
 
@@ -50,8 +51,8 @@ public class MaxSpacingKClustering {
         return this;
     }
 
-    public MaxSpacingKClustering useSourceFile(String filename) {
-        this.filename = filename;
+    public MaxSpacingKClustering useSource(Reader source) {
+        this.source = source;
         return this;
     }
 
@@ -76,7 +77,7 @@ public class MaxSpacingKClustering {
     }
 
     private void readFile() throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(filename));
+        BufferedReader reader = new BufferedReader(source);
         String line;
         // First line is: number of nodes
         line = reader.readLine();

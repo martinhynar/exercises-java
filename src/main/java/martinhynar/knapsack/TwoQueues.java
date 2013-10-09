@@ -7,8 +7,8 @@
 package martinhynar.knapsack;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
 import java.util.*;
 
 /**
@@ -17,7 +17,8 @@ import java.util.*;
  */
 public class TwoQueues {
 
-    private String filename;
+    private Reader source;
+    private BufferedReader reader;
     private int knapsackSize;
     private boolean printSteps = false;
     private int numberOfItems;
@@ -31,8 +32,8 @@ public class TwoQueues {
     public TwoQueues() {
     }
 
-    public TwoQueues useSourceFile(String filename) {
-        this.filename = filename;
+    public TwoQueues useSource(Reader source) {
+        this.source = source;
         return this;
     }
 
@@ -121,7 +122,7 @@ public class TwoQueues {
 
 
     private void readFile() throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(filename));
+        reader = new BufferedReader(source);
         String line;
         String[] split;
         // First line is: [knapsack_size][number_of_items]

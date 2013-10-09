@@ -8,8 +8,8 @@ package martinhynar;
 
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -42,8 +42,9 @@ import java.util.Set;
  */
 public class PrimMST {
     private Strategy strategy;
-    private String filename;
     private WeightedUndirectedGraph graph;
+    private Reader source;
+    private BufferedReader reader;
 
     public PrimMST() {
     }
@@ -69,13 +70,13 @@ public class PrimMST {
     }
 
 
-    public PrimMST readGraphFromFile(String filename) {
-        this.filename = filename;
+    public PrimMST useSource(Reader source) {
+        this.source = source;
         return this;
     }
 
     private void readFile() throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(filename));
+        reader = new BufferedReader(source);
         String line;
         // First line is: [number_of_nodes] [number_of_edges]
         line = reader.readLine();

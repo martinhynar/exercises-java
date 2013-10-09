@@ -7,8 +7,8 @@
 package martinhynar;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -50,6 +50,8 @@ public class JobScheduler {
     private boolean useSubtractionScoring;
     private ArrayList<Job> jobs;
     private Comparator<Job> scoring;
+    private Reader source;
+    private BufferedReader reader;
 
     private class Job {
         public final int weight;
@@ -70,15 +72,18 @@ public class JobScheduler {
         }
     }
 
-    public JobScheduler(String filename) throws Exception {
-        // read file
-        readFile(filename);
+    public JobScheduler() throws Exception {
         // by default set scoring to ratio-based
         this.useSubtractionScoring = false;
     }
 
-    private void readFile(String filename) throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(filename));
+    public JobScheduler useSource(Reader source) {
+        this.source = source;
+        return this;
+    }
+
+    private void readFile() throws IOException {
+        BufferedReader reader = new BufferedReader(source);
         String line;
         // First line is number of jobs
         line = reader.readLine();
@@ -139,7 +144,8 @@ public class JobScheduler {
         return this;
     }
 
-    public long getCost() {
+    public long getCost() throws IOException {
+        readFile();
         // Init scoring
         setupScoring();
         // Sort jobs

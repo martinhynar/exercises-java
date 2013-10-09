@@ -1,8 +1,8 @@
 package martinhynar.knapsack;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -20,7 +20,8 @@ import java.util.List;
  * capacity are integers.
  */
 public class IterativeKnapsackProblem {
-    private String filename;
+    private Reader source;
+    private BufferedReader reader;
     private int knapsackSize;
     List<Item> items;
     int[][] solution;
@@ -30,8 +31,8 @@ public class IterativeKnapsackProblem {
     public IterativeKnapsackProblem() {
     }
 
-    public IterativeKnapsackProblem useSourceFile(String filename) {
-        this.filename = filename;
+    public IterativeKnapsackProblem useSource(Reader source) {
+        this.source = source;
         return this;
     }
 
@@ -41,7 +42,7 @@ public class IterativeKnapsackProblem {
     }
 
     public long getOptimum() throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(filename));
+        reader = new BufferedReader(source);
         String line;
         String[] split = null;
         // First line is: [knapsack_size][number_of_items]
