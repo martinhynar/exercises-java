@@ -3,11 +3,8 @@ package martinhynar.graph;
 import java.util.List;
 
 /**
- * Created with IntelliJ IDEA.
- * User: mhynar
- * Date: 10/6/13
- * Time: 3:04 PM
- * To change this template use File | Settings | File Templates.
+ * @author mhynar
+ * @since 2013-Oct-01
  */
 public interface WeightedDirectedGraph {
 

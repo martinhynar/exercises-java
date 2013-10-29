@@ -1,17 +1,12 @@
-/*
- * CONFIDENTIAL COMPUTER CODE AND INFORMATION
- * COPYRIGHT (C) 2000-2010 VENDAVO, INC. ALL RIGHTS RESERVED.
- * REPRODUCTION BY ANY MEANS EXPRESSLY FORBIDDEN WITHOUT THE WRITTEN
- * PERMISSION OF THE OWNER.
- */
 package martinhynar;
 
-import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
+
+import static org.hamcrest.CoreMatchers.is;
 
 /**
  * @author mhynar
@@ -25,7 +20,7 @@ public class MaxSpacingKClusteringBinaryTest {
                 .useSource(new InputStreamReader(in))
                 .useLimitSpacing(3);
         long maxK = clustering.getMaxK();
-        Assert.assertThat(maxK, CoreMatchers.is(4L));
+        Assert.assertThat(maxK, is(4L));
     }
 
     @Test
@@ -35,7 +30,7 @@ public class MaxSpacingKClusteringBinaryTest {
                 .useSource(new InputStreamReader(in))
                 .useLimitSpacing(3);
         long maxK = clustering.getMaxK();
-        Assert.assertThat(maxK, CoreMatchers.is(6L));
+        Assert.assertThat(maxK, is(6L));
     }
 
     @Test
@@ -45,7 +40,7 @@ public class MaxSpacingKClusteringBinaryTest {
                 .useSource(new InputStreamReader(in))
                 .useLimitSpacing(3);
         long maxK = clustering.getMaxK();
-        Assert.assertThat(maxK, CoreMatchers.is(45L));
+        Assert.assertThat(maxK, is(45L));
     }
 
     @Test
@@ -55,7 +50,7 @@ public class MaxSpacingKClusteringBinaryTest {
                 .useSource(new InputStreamReader(in))
                 .useLimitSpacing(3);
         long maxK = clustering.getMaxK();
-        Assert.assertThat(maxK, CoreMatchers.is(1L));
+        Assert.assertThat(maxK, is(1L));
     }
 
     @Test
@@ -65,7 +60,7 @@ public class MaxSpacingKClusteringBinaryTest {
                 .useSource(new InputStreamReader(in))
                 .useLimitSpacing(3);
         long maxK = clustering.getMaxK();
-        Assert.assertThat(maxK, CoreMatchers.is(99398L));
+        Assert.assertThat(maxK, is(99398L));
     }
 
     @Test
@@ -76,6 +71,6 @@ public class MaxSpacingKClusteringBinaryTest {
                 .useLimitSpacing(3);
         long maxK = clustering.getMaxK();
         System.out.println("Asigmentn rs: " + maxK);
-        Assert.assertThat(maxK, CoreMatchers.is(6118L));
+        Assert.assertThat(maxK, is(6118L));
     }
 }

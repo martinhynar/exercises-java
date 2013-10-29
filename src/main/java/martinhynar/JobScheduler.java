@@ -1,9 +1,3 @@
-/*
- * CONFIDENTIAL COMPUTER CODE AND INFORMATION
- * COPYRIGHT (C) 2000-2010 VENDAVO, INC. ALL RIGHTS RESERVED.
- * REPRODUCTION BY ANY MEANS EXPRESSLY FORBIDDEN WITHOUT THE WRITTEN
- * PERMISSION OF THE OWNER.
- */
 package martinhynar;
 
 import java.io.BufferedReader;
@@ -83,7 +77,7 @@ public class JobScheduler {
     }
 
     private void readFile() throws IOException {
-        BufferedReader reader = new BufferedReader(source);
+        reader = new BufferedReader(source);
         String line;
         // First line is number of jobs
         line = reader.readLine();

@@ -1,0 +1,7 @@
+# Complete graph described using coordinates of cities. The result is ~4
+5
+0 0
+0 0.5
+0 1
+1 1
+1 0

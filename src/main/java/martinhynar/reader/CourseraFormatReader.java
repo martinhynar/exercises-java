@@ -1,11 +1,7 @@
-/*
- * CONFIDENTIAL COMPUTER CODE AND INFORMATION
- * COPYRIGHT (C) 2000-2010 VENDAVO, INC. ALL RIGHTS RESERVED.
- * REPRODUCTION BY ANY MEANS EXPRESSLY FORBIDDEN WITHOUT THE WRITTEN
- * PERMISSION OF THE OWNER.
- */
 package martinhynar.reader;
 
+import martinhynar.graph.WUG_EuclideanDistance;
+import martinhynar.graph.WUG_List;
 import martinhynar.graph.WeightedDirectedGraphList;
 
 import java.io.BufferedReader;
@@ -47,6 +43,48 @@ public class CourseraFormatReader {
         }
         return wdg;
     }
+
+    public WUG_EuclideanDistance buildWUG_EuclideanDistance() throws Exception {
+        WUG_EuclideanDistance wdg = null;
+        reader = new BufferedReader(source);
+        String line;
+        String[] split = null;
+        //number_of_vertices
+        line = readNextLine();
+        int vertices = Integer.parseInt(line);
+        wdg = new WUG_EuclideanDistance(vertices);
+        // xcoord ycoord
+        while ((line = readNextLine()) != null) {
+            split = line.split(BLANK);
+            double x = Double.parseDouble(split[0]);
+            double y = Double.parseDouble(split[1]);
+            wdg.addVertex(x, y);
+        }
+        return wdg;
+    }
+
+    public WUG_List buildWUG_List() throws Exception {
+        WUG_List wug = null;
+        reader = new BufferedReader(source);
+        String line;
+        String[] split = null;
+        //number_of_vertices number_of_edges
+        line = readNextLine();
+        split = line.split(BLANK);
+        int vertices = Integer.parseInt(split[0]);
+        int edges = Integer.parseInt(split[1]);
+        wug = new WUG_List(vertices, edges);
+        // tail head weight
+        while ((line = readNextLine()) != null) {
+            split = line.split(BLANK);
+            int u = Integer.parseInt(split[0]);
+            int v = Integer.parseInt(split[1]);
+            int weight = Integer.parseInt(split[2]);
+            wug.addEdge(u, v, weight);
+        }
+        return wug;
+    }
+
 
     private String readNextLine() throws Exception {
         String line;
