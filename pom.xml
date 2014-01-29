@@ -21,6 +21,13 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.easytesting</groupId>
+            <artifactId>fest-assert</artifactId>
+            <version>1.4</version>
+        </dependency>
+
+
+        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-math3</artifactId>
             <version>3.2</version>
@@ -44,9 +51,6 @@
                     <argLine>-Xms3000m -Xmx3000m</argLine>
                     <testFailureIgnore>false</testFailureIgnore>
                     <skip>false</skip>
-                    <includes>
-                        <include>**/*TravelingSalesmanProblemTest.java</include>
-                    </includes>
                 </configuration>
             </plugin>
         </plugins>
